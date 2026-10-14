@@ -704,30 +704,67 @@
             });
         }
 
-        function updateGrafikAdmin(putra1, putra2, putra3, putri1, putri2, putri3) {
-            const totalPutra = putra1 + putra2 + putra3;
-            const totalPutri = putri1 + putri2 + putri3;
+        function updateGrafikAdmin() {
+            // URL Murni ke sheet suara
+            const url = `https://docs.google.com/spreadsheets/d/1gR_p5dgEY28Y54wvDHqawCybhXx2iUe82ZDc-mPbBkk/gviz/tq?tqx=out:json&sheet=Sheet1`;
 
-            document.getElementById('suara-putra-1').innerText = putra1 + ' Suara';
-            document.getElementById('suara-putra-2').innerText = putra2 + ' Suara';
-            document.getElementById('suara-putra-3').innerText = putra3 + ' Suara';
-            document.getElementById('suara-putri-1').innerText = putri1 + ' Suara';
-            document.getElementById('suara-putri-2').innerText = putri2 + ' Suara';
-            document.getElementById('suara-putri-3').innerText = putri3 + ' Suara';
+            fetch(url)
+                .then(res => res.text())
+                .then(text => {
+                    // Ekstrak JSON murni
+                    const data = JSON.parse(text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1));
+                    
+                    let putra1 = 0, putra2 = 0, putra3 = 0;
+                    let putri1 = 0, putri2 = 0, putri3 = 0;
+                    let totalSuara = 0;
 
-            const pPutra1 = totalPutra === 0 ? 0 : (putra1 / totalPutra) * 100;
-            const pPutra2 = totalPutra === 0 ? 0 : (putra2 / totalPutra) * 100;
-            const pPutra3 = totalPutra === 0 ? 0 : (putra3 / totalPutra) * 100;
-            const pPutri1 = totalPutri === 0 ? 0 : (putri1 / totalPutri) * 100;
-            const pPutri2 = totalPutri === 0 ? 0 : (putri2 / totalPutri) * 100;
-            const pPutri3 = totalPutri === 0 ? 0 : (putri3 / totalPutri) * 100;
+                    // Hitung jumlah baris data yang ada (mengabaikan baris kosong)
+                    if (data.table.rows && data.table.rows.length > 0) {
+                        data.table.rows.forEach(row => {
+                            if (row.c && row.c[2] && row.c[2].v) { // Kolom Kandidat Terpilih adalah C (indeks 2)
+                                const kandidat = String(row.c[2].v).trim();
+                                totalSuara++; // Tambah total suara setiap ada data valid
+                                
+                                // PENGHITUNGAN PUTRA (Sesuaikan teks dengan yang masuk di Google Sheets)
+                                if (kandidat === '01 M. Ferdy Putra 1' || kandidat.includes('Ferdy')) putra1++;
+                                else if (kandidat === '02. Hamba Allah') putra2++;
+                                else if (kandidat === '03. Moch. Rizqulloh') putra3++;
+                                
+                                // PENGHITUNGAN PUTRI (Sesuaikan teks dengan yang masuk di Google Sheets)
+                                else if (kandidat === 'Kandidat Putri 1') putri1++;
+                                else if (kandidat === '02. Zaina Nura Afnuza' || kandidat === '02. Zaina Naura Afnuza') putri2++;
+                                else if (kandidat === '03. Hilwa Fikriyah Zaidah') putri3++;
+                            }
+                        });
+                    }
 
-            document.getElementById('bar-putra-1').style.width = pPutra1 + '%';
-            document.getElementById('bar-putra-2').style.width = pPutra2 + '%';
-            document.getElementById('bar-putra-3').style.width = pPutra3 + '%';
-            document.getElementById('bar-putri-1').style.width = pPutri1 + '%';
-            document.getElementById('bar-putri-2').style.width = pPutri2 + '%';
-            document.getElementById('bar-putri-3').style.width = pPutri3 + '%';
+                    // Tentukan suara tertinggi masing-masing bilik untuk persentase bar
+                    let maxPutra = Math.max(putra1, putra2, putra3);
+                    let maxPutri = Math.max(putri1, putri2, putri3);
+
+                    // Fungsi untuk menghitung persentase lebar bar (hindari pembagian dengan 0)
+                    const calcWidth = (suara, max) => max > 0 ? (suara / max) * 100 : 0;
+
+                    // Update Teks Angka
+                    document.getElementById('suara-putra-1').innerText = putra1 + " Suara";
+                    document.getElementById('suara-putra-2').innerText = putra2 + " Suara";
+                    document.getElementById('suara-putra-3').innerText = putra3 + " Suara";
+                    document.getElementById('suara-putri-1').innerText = putri1 + " Suara";
+                    document.getElementById('suara-putri-2').innerText = putri2 + " Suara";
+                    document.getElementById('suara-putri-3').innerText = putri3 + " Suara";
+
+                    // Update Lebar Bar Visual
+                    document.getElementById('bar-putra-1').style.width = calcWidth(putra1, maxPutra) + "%";
+                    document.getElementById('bar-putra-2').style.width = calcWidth(putra2, maxPutra) + "%";
+                    document.getElementById('bar-putra-3').style.width = calcWidth(putra3, maxPutra) + "%";
+                    document.getElementById('bar-putri-1').style.width = calcWidth(putri1, maxPutri) + "%";
+                    document.getElementById('bar-putri-2').style.width = calcWidth(putri2, maxPutri) + "%";
+                    document.getElementById('bar-putri-3').style.width = calcWidth(putri3, maxPutri) + "%";
+
+                })
+                .catch(error => {
+                    console.error("Gagal menarik data untuk grafik:", error);
+                });
         }
 
         function refreshDataAdmin() {
