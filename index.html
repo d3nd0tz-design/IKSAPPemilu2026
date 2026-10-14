@@ -35,13 +35,11 @@
                 <p class="text-center text-sm text-gray-500 mb-8">Silakan masukkan Username & Password Warga IKSAP Anda.</p>
                 <div class="space-y-5">
                     <div>
-                        <input type="text" id="usernameInput" placeholder="Username " 
-                               class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
-                    </div>
-                    <div>
-                        <input type="password" id="passwordInput" placeholder="Password" 
-                               class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
-                    </div>
+                <input type="text" id="usernameInput" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('passwordInput').focus(); }" placeholder="Username" class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+            </div>
+            <div>
+                <input type="password" id="passwordInput" onkeypress="if(event.key === 'Enter') prosesLogin()" placeholder="Password" class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+            </div>
                     <button onclick="prosesLogin()" 
                             class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-full transition-all shadow-md mt-2">
                         Login
@@ -71,31 +69,31 @@
                     </div>
                     <div class="mt-4 flex flex-col gap-3">
                         <button onclick="bukaProfil('putra1')" class="w-full bg-gray-100 hover:bg-gray-200 text-indigo-600 font-semibold py-2.5 rounded-full shadow-sm transition text-sm">📖 Lihat Profil & Visi Misi</button>
-                        <button onclick="prosesVote('Kandidat Putra 1', 'Putra')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-full shadow-md transition">Vote Kandidat 1</button>
+                        <button onclick="prosesVote('01 M. Ferdy Putra 1', 'Putra')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-full shadow-md transition">Vote Ferdy 01</button>
                     </div>
                 </div>
                 <!-- Kandidat Putra 2 -->
                 <div class="bg-white rounded-[2rem] shadow-2xl p-8 flex flex-col h-full">
                     <div class="flex-grow">
                         <div class="w-28 h-28 mx-auto rounded-full border-4 border-indigo-100 mb-6 overflow-hidden shadow-md"><img src="kandidat2.jpg" alt="Foto" class="w-full h-full object-cover"></div>
-                        <h2 class="text-2xl font-bold text-center mb-6 text-gray-900">Kandidat Putra 2</h2>
+                        <h2 class="text-2xl font-bold text-center mb-6 text-gray-900">02.<br>Hamba Allah</h2>
                     </div>
                     <div class="mt-4 flex flex-col gap-3">
                         <button onclick="bukaProfil('putra2')" class="w-full bg-gray-100 hover:bg-gray-200 text-indigo-600 font-semibold py-2.5 rounded-full shadow-sm transition text-sm">📖 Lihat Profil & Visi Misi</button>
-                        <button onclick="prosesVote('Kandidat Putra 2', 'Putra')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-full shadow-md transition">Vote Kandidat 2</button>
+                        <button onclick="prosesVote('02. Hamba Allah', 'Putra')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-full shadow-md transition">Vote Hamba 02</button>
                     </div>
                 </div>
                 <!-- Kandidat Putra 3 -->
                 <div class="bg-white rounded-[2rem] shadow-2xl p-8 flex flex-col h-full">
                     <div class="flex-grow">
                         <div class="w-28 h-28 mx-auto rounded-full border-4 border-indigo-100 mb-6 overflow-hidden shadow-md"><img src="kandidat3.jpg" alt="Foto" class="w-full h-full object-cover"></div>
-                        <h2 class="text-2xl font-bold text-center mb-6 text-gray-900">Kandidat Putra 3</h2>
+                        <h2 class="text-2xl font-bold text-center mb-6 text-gray-900">03.<br>Moch. Rizqulloh</h2>
                     </div>
                     <div class="mt-4 flex flex-col gap-3">
                         <button onclick="bukaProfil('putra3')" class="w-full bg-gray-100 hover:bg-gray-200 text-indigo-600 font-semibold py-2.5 rounded-full shadow-sm transition text-sm">📖 Lihat Profil & Visi Misi</button>
-                        <button onclick="prosesVote('Kandidat Putra 3', 'Putra')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-full shadow-md transition">Vote Kandidat 3</button>
+                        <button onclick="prosesVote('03. Moch. Rizqulloh', 'Putra')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-full shadow-md transition">Vote Jupar 03</button>
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
     </div>
@@ -127,29 +125,99 @@
                 <div class="bg-white rounded-[2rem] shadow-2xl p-8 flex flex-col h-full">
                     <div class="flex-grow">
                         <div class="w-28 h-28 mx-auto rounded-full border-4 border-pink-100 mb-6 overflow-hidden shadow-md"><img src="kandidat5.jpg" alt="Foto" class="w-full h-full object-cover"></div>
-                        <h2 class="text-2xl font-bold text-center mb-6 text-gray-900">Kandidat Putri 2</h2>
+                        <h2 class="text-2xl font-bold text-center mb-6 text-gray-900">02.<br>Zaina Naura Afnuza</h2>
                     </div>
                     <div class="mt-4 flex flex-col gap-3">
                         <button onclick="bukaProfil('putri2')" class="w-full bg-pink-50 hover:bg-pink-100 text-pink-600 font-semibold py-2.5 rounded-full shadow-sm transition text-sm">📖 Lihat Profil & Visi Misi</button>
-                        <button onclick="prosesVote('Kandidat Putri 2', 'Putri')" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 rounded-full shadow-md transition">Vote Kandidat 2</button>
+                        <button onclick="prosesVote('02. Zaina Nura Afnuza', 'Putri')" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 rounded-full shadow-md transition">Vote Jenab 02</button>
                     </div>
                 </div>
                 <!-- Kandidat Putri 3 -->
                 <div class="bg-white rounded-[2rem] shadow-2xl p-8 flex flex-col h-full">
                     <div class="flex-grow">
                         <div class="w-28 h-28 mx-auto rounded-full border-4 border-pink-100 mb-6 overflow-hidden shadow-md"><img src="kandidat6.jpg" alt="Foto" class="w-full h-full object-cover"></div>
-                        <h2 class="text-2xl font-bold text-center mb-6 text-gray-900">Kandidat Putri 3</h2>
+                        <h2 class="text-2xl font-bold text-center mb-6 text-gray-900">03.<br>Hilwa Fikriyah Zaidah</h2>
                     </div>
                     <div class="mt-4 flex flex-col gap-3">
                         <button onclick="bukaProfil('putri3')" class="w-full bg-pink-50 hover:bg-pink-100 text-pink-600 font-semibold py-2.5 rounded-full shadow-sm transition text-sm">📖 Lihat Profil & Visi Misi</button>
-                        <button onclick="prosesVote('Kandidat Putri 3', 'Putri')" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 rounded-full shadow-md transition">Vote Kandidat 3</button>
+                        <button onclick="prosesVote('03. Hilwa Fikriyah Zaidah', 'Putri')" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 rounded-full shadow-md transition">Vote Hilwa 03</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 4. HALAMAN ADMIN -->
+<!-- HALAMAN PANITIA PENDAFTARAN -->
+    <div id="panitia-section" class="hidden min-h-screen flex items-center justify-center p-6 w-full relative" style="background-image: url('bg-panitia.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+        <div class="absolute inset-0 bg-black bg-opacity-60"></div> 
+        
+        <!-- Wadah utama untuk dua kotak berdampingan -->
+        <div class="flex flex-col md:flex-row gap-8 w-full max-w-5xl relative z-10">
+            
+            <!-- KOTAK 1: Form Pendaftaran -->
+            <div class="bg-white rounded-[2rem] shadow-2xl p-10 w-full md:w-1/2 flex flex-col justify-center">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900">Panel Panitia</h2>
+                    <p class="text-gray-500 text-sm">Tambahkan pemilih baru ke database.</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Bilik Tujuan</label>
+                        <select id="panitia-bilik" class="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-indigo-500 bg-gray-50">
+                            <option value="Hadir Putra">Bilik Putra</option>
+                            <option value="Hadir Putri">Bilik Putri</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Username Baru</label>
+                        <input type="text" id="panitia-user" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('panitia-pass').focus(); }" placeholder="Nama Santri" class="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-indigo-500 bg-gray-50">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+                        <input type="password" id="panitia-pass" onkeypress="if(event.key === 'Enter') daftarkanPemilih()" placeholder="Buat Password" class="w-full px-5 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-indigo-500 bg-gray-50">
+                    </div>
+                    <button onclick="daftarkanPemilih()" id="btn-daftar" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl shadow-md transition mt-4">
+                        Tambahkan Pemilih
+                    </button>
+                    <button onclick="window.location.reload()" class="w-full bg-gray-100 hover:bg-gray-200 text-gray-600 font-semibold py-3 rounded-xl transition mt-2">
+                        Tutup Panel
+                    </button>
+                </div>
+            </div>
+
+            <!-- KOTAK 2: Daftar Santri Terdaftar -->
+            <div class="bg-white/90 backdrop-blur-md rounded-[2rem] shadow-2xl p-8 w-full md:w-1/2 flex flex-col">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-900">Daftar Terkini</h2>
+                    <button onclick="refreshDaftarPanitia()" class="text-indigo-600 hover:text-indigo-800 text-sm font-semibold px-3 py-1 bg-indigo-100 rounded-full transition">Refresh Data</button>
+                </div>
+                
+                <div class="flex-1 overflow-y-auto max-h-[400px] modal-scroll pr-2">
+                    <div class="space-y-6">
+                        <!-- List Putra -->
+                        <div>
+                            <h3 class="font-bold text-indigo-700 border-b-2 border-indigo-200 pb-1 mb-3">Santri Putra</h3>
+                            <ul id="list-hadir-putra" class="space-y-2 text-sm text-gray-700">
+                                <li class="italic text-gray-400">Memuat data...</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- List Putri -->
+                        <div>
+                            <h3 class="font-bold text-pink-600 border-b-2 border-pink-200 pb-1 mb-3">Santri Putri</h3>
+                            <ul id="list-hadir-putri" class="space-y-2 text-sm text-gray-700">
+                                <li class="italic text-gray-400">Memuat data...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+<!-- 4. HALAMAN ADMIN -->
     <div id="admin-section" class="hidden min-h-screen flex flex-col items-center justify-start p-6 pt-12 w-full text-white">
         <div class="flex items-center gap-4 mb-2">
             <img src="LOGO IKSAP.jpg" alt="Logo" class="w-12 h-12 rounded-full border-2 border-white">
@@ -157,26 +225,109 @@
         </div>
         <p class="text-indigo-100 mb-12 text-lg font-medium">Rekapitulasi Suara Organisasi IKSAP</p>
 
-        <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- KARTU ADMIN PUTRA -->
             <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/20 shadow-2xl">
-                <h2 class="text-3xl font-bold mb-6 text-center border-b border-white/20 pb-4">BILIK PUTRA</h2>
-                <div class="mb-6"><div class="flex justify-between mb-2"><span class="text-xl font-semibold">1. Kandidat Putra 1</span><span class="text-2xl font-bold text-green-300" id="suara-putra-1">0 Suara</span></div><div class="w-full bg-black/30 rounded-full h-6"><div id="bar-putra-1" class="bg-gradient-to-r from-green-400 to-green-300 h-full rounded-full transition-all duration-1000" style="width: 0%"></div></div></div>
-                <div class="mb-6"><div class="flex justify-between mb-2"><span class="text-xl font-semibold">2. Kandidat Putra 2</span><span class="text-2xl font-bold text-yellow-300" id="suara-putra-2">0 Suara</span></div><div class="w-full bg-black/30 rounded-full h-6"><div id="bar-putra-2" class="bg-gradient-to-r from-yellow-400 to-yellow-300 h-full rounded-full transition-all duration-1000" style="width: 0%"></div></div></div>
-                <div><div class="flex justify-between mb-2"><span class="text-xl font-semibold">3. Kandidat Putra 3</span><span class="text-2xl font-bold text-blue-300" id="suara-putra-3">0 Suara</span></div><div class="w-full bg-black/30 rounded-full h-6"><div id="bar-putra-3" class="bg-gradient-to-r from-blue-400 to-blue-300 h-full rounded-full transition-all duration-1000" style="width: 0%"></div></div></div>
+                <h2 class="text-3xl font-bold mb-8 text-center border-b border-white/20 pb-4">BILIK PUTRA</h2>
+                
+                <!-- Admin Putra 1 -->
+                <div class="mb-6 flex items-center gap-4">
+                    <img src="kandidat1.jpg" class="w-16 h-16 rounded-full border-2 border-red-400 object-cover shadow-md flex-shrink-0">
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-semibold">1. 01 Ferdy</span>
+                            <span class="text-xl font-bold text-white-400" id="suara-putra-1">0 Suara</span>
+                        </div>
+                        <div class="w-full bg-black/30 rounded-full h-6">
+                            <div id="bar-putra-1" class="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Putra 2 -->
+                <div class="mb-6 flex items-center gap-4">
+                    <img src="kandidat2.jpg" class="w-16 h-16 rounded-full border-2 border-red-400 object-cover shadow-md flex-shrink-0">
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-semibold">2. Kandidat Putra 2</span>
+                            <span class="text-xl font-bold text-white-400" id="suara-putra-2">0 Suara</span>
+                        </div>
+                        <div class="w-full bg-black/30 rounded-full h-6">
+                            <div id="bar-putra-2" class="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Putra 3 -->
+                <div class="mb-6 flex items-center gap-4">
+                    <img src="kandidat3.jpg" class="w-16 h-16 rounded-full border-2 border-red-400 object-cover shadow-md flex-shrink-0">
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-semibold">3. Kandidat Putra 3</span>
+                            <span class="text-xl font-bold text-white-400" id="suara-putra-3">0 Suara</span>
+                        </div>
+                        <div class="w-full bg-black/30 rounded-full h-6">
+                            <div id="bar-putra-3" class="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- KARTU ADMIN PUTRI -->
             <div class="bg-white/10 backdrop-blur-md rounded-3xl p-6 md:p-8 border border-white/20 shadow-2xl">
-                <h2 class="text-3xl font-bold mb-6 text-center border-b border-white/20 pb-4 text-pink-100">BILIK PUTRI</h2>
-                <div class="mb-6"><div class="flex justify-between mb-2"><span class="text-xl font-semibold">1. Kandidat Putri 1</span><span class="text-2xl font-bold text-pink-300" id="suara-putri-1">0 Suara</span></div><div class="w-full bg-black/30 rounded-full h-6"><div id="bar-putri-1" class="bg-gradient-to-r from-pink-400 to-pink-300 h-full rounded-full transition-all duration-1000" style="width: 0%"></div></div></div>
-                <div class="mb-6"><div class="flex justify-between mb-2"><span class="text-xl font-semibold">2. Kandidat Putri 2</span><span class="text-2xl font-bold text-purple-300" id="suara-putri-2">0 Suara</span></div><div class="w-full bg-black/30 rounded-full h-6"><div id="bar-putri-2" class="bg-gradient-to-r from-purple-400 to-purple-300 h-full rounded-full transition-all duration-1000" style="width: 0%"></div></div></div>
-                <div><div class="flex justify-between mb-2"><span class="text-xl font-semibold">3. Kandidat Putri 3</span><span class="text-2xl font-bold text-orange-300" id="suara-putri-3">0 Suara</span></div><div class="w-full bg-black/30 rounded-full h-6"><div id="bar-putri-3" class="bg-gradient-to-r from-orange-400 to-orange-300 h-full rounded-full transition-all duration-1000" style="width: 0%"></div></div></div>
+                <h2 class="text-3xl font-bold mb-8 text-center border-b border-white/20 pb-4 text-pink-100">BILIK PUTRI</h2>
+                
+                <!-- Admin Putri 1 -->
+                <div class="mb-6 flex items-center gap-4">
+                    <img src="kandidat4.jpg" class="w-16 h-16 rounded-full border-2 border-red-400 object-cover shadow-md flex-shrink-0">
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-semibold">1. Kandidat Putri 1</span>
+                            <span class="text-xl font-bold text-white-400" id="suara-putri-1">0 Suara</span>
+                        </div>
+                        <div class="w-full bg-black/30 rounded-full h-6">
+                            <div id="bar-putri-1" class="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Putri 2 -->
+                <div class="mb-6 flex items-center gap-4">
+                    <img src="kandidat5.jpg" class="w-16 h-16 rounded-full border-2 border-red-400 object-cover shadow-md flex-shrink-0">
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-semibold">2. Kandidat Putri 2</span>
+                            <span class="text-xl font-bold text-White-400" id="suara-putri-2">0 Suara</span>
+                        </div>
+                        <div class="w-full bg-black/30 rounded-full h-6">
+                            <div id="bar-putri-2" class="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Admin Putri 3 -->
+                <div class="mb-6 flex items-center gap-4">
+                    <img src="kandidat6.jpg" class="w-16 h-16 rounded-full border-2 border-red-400 object-cover shadow-md flex-shrink-0">
+                    <div class="flex-1">
+                        <div class="flex justify-between mb-1">
+                            <span class="text-lg font-semibold">3. Kandidat Putri 3</span>
+                            <span class="text-xl font-bold text-white-400" id="suara-putri-3">0 Suara</span>
+                        </div>
+                        <div class="w-full bg-black/30 rounded-full h-6">
+                            <div id="bar-putri-3" class="bg-gradient-to-r from-red-500 to-red-400 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
+        
         <div class="mt-8 flex gap-4">
-            <button onclick="refreshDataAdmin()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full font-bold shadow-md transition flex items-center"><span id="text-refresh-admin">Sistem Real-Time Siap</span></button>
+            <button onclick="refreshDataAdmin()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-full font-bold shadow-md transition flex items-center"><span id="text-refresh-admin">RefreshData</span></button>
             <button onclick="window.location.reload()" class="bg-white hover:bg-gray-100 text-indigo-600 px-6 py-2 rounded-full font-bold shadow-md transition">Kembali ke Login</button>
         </div>
     </div>
-
     <!-- MODAL PROFIL KANDIDAT (FITUR BARU) -->
     <div id="modal-profil" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
         <div class="bg-white rounded-[2rem] w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl relative overflow-hidden">
@@ -192,21 +343,22 @@
                     <img id="profil-foto" src="" class="w-32 h-32 rounded-full border-4 border-indigo-100 object-cover shadow-md flex-shrink-0">
                     <div class="text-center md:text-left">
                         <h2 id="profil-nama" class="text-3xl font-bold text-gray-900 mb-2">Nama Kandidat</h2>
+                        <p id="profil-ttl" class="text-gray-600 font-medium mb-3">Tempat, Tanggal Lahir</p>
                         <span id="profil-kategori" class="inline-block bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-semibold">Kategori</span>
                     </div>
                 </div>
 
                 <div class="space-y-6">
                     <div>
-                        <h4 class="text-lg font-bold text-indigo-600 mb-2 flex items-center gap-2">🎯 Visi</h4>
+                        <h4 class="text-lg font-bold text-indigo-600 mb-2 flex items-center gap-2">Visi</h4>
                         <p id="profil-visi" class="text-gray-700 leading-relaxed"></p>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold text-indigo-600 mb-2 flex items-center gap-2">🚀 Misi</h4>
+                        <h4 class="text-lg font-bold text-indigo-600 mb-2 flex items-center gap-2">Misi</h4>
                         <ul id="profil-misi" class="list-disc pl-5 text-gray-700 leading-relaxed space-y-1"></ul>
                     </div>
                     <div>
-                        <h4 class="text-lg font-bold text-indigo-600 mb-2 flex items-center gap-2">🏢 Pengalaman Organisasi</h4>
+                        <h4 class="text-lg font-bold text-indigo-600 mb-2 flex items-center gap-2">Pengalaman Organisasi</h4>
                         <ul id="profil-pengalaman" class="list-disc pl-5 text-gray-700 leading-relaxed space-y-1"></ul>
                     </div>
                 </div>
@@ -222,7 +374,7 @@
     <!-- MODAL KONFIRMASI VOTING -->
     <div id="modal-konfirmasi" class="hidden fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
         <div class="bg-white rounded-[2rem] p-8 max-w-sm w-full text-center shadow-2xl">
-            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">❓</div>
+            <div class="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl"></div>
             <h3 class="text-2xl font-bold text-gray-900 mb-2">Konfirmasi Pilihan</h3>
             <p class="text-gray-600 mb-6 text-sm">Yakin memilih <span id="nama-kandidat-terpilih" class="font-bold text-indigo-600 text-base"></span>?<br><br>Pilihan yang dikirim tidak dapat diubah.</p>
             <div class="flex gap-4">
@@ -277,19 +429,21 @@
                 ]
             },
             "putra3": {
-                nama: "Kandidat Putra 3",
-                kategori: "Calon Ketua Putra",
+                nama: "Moch. Rizqulloh",
+                ttl:"Pasuruan,29 November 2009",
+                kategori: "Calon Ketua IKSAP Putra",
                 foto: "kandidat3.jpg",
-                visi: "Membangun semangat gotong royong dan kemandirian berwirausaha bagi santri.",
+                visi: "Terwujudnya IKSAP sebagai wadah kekeluargaan yang guyub, solid, dan inklusif dengan berlandaskan semangat kebersamaan dan kepedulian sosial antaranggota.",
                 misi: [
-                    "Menghidupkan kembali koperasi santri.",
-                    "Membuat forum diskusi mingguan lintas divisi.",
-                    "Meningkatkan budaya literasi membaca kitab dan buku umum."
+                    "Mempererat Komunikasi: Membangun saluran komunikasi yang aktif, transparan, dan terhubung baik lintas angkatan maupun lintas generasi.",
+                    "Mengoptimalkan Pertemuan Rutin: Mengadakan kegiatan temu kumpul, arisan, serta ruang temu daring dan luring yang berkesinambungan.",
+                    "Meningkatkan Kepedulian Sosial: Mengembangkan program tanggap sosial seperti dana kas peduli anggota, dan gotong royong bagi anggota yang membutuhkan.Kolaborasi dan Pemberdayaan: Membuka peluang pertukaran informasi, jejaring karier, maupun kerja sama untuk kemajuan bersama seluruh anggota IKSAP."
                 ],
                 pengalaman: [
-                    "Bendahara Koperasi Santri 2025",
-                    "Anggota Divisi Pendidikan",
-                    "Panitia Ramadhan 2025"
+                    "Wakil Bendahara IKSAP 2025",
+                    "Bendahara IKSAP 2026",
+                    "Bendahara Kharisma 2026",
+                    "Pengurus pengajian pondok induk"
                 ]
             },
             "putri1": {
@@ -309,14 +463,16 @@
                 ]
             },
             "putri2": {
-                nama: "Kandidat Putri 2",
-                kategori: "Calon Ketua Putri",
+                nama: " Zaina Nuara Afruzah",
+                ttl: " Pasuruan, 18 Oktober 2008",
+                kategori: "Calon Ketua IKSAP Putri",
                 foto: "kandidat5.jpg",
-                visi: "Menjadikan santri putri IKSAP sebagai pelopor kebersihan dan kesehatan lingkungan.",
+                visi: "Menjadikan ORDA IKSAP menjadi tempat berkembang dengan rasa kekeluargaan",
                 misi: [
-                    "Mengadakan senam sehat setiap jumat pagi.",
-                    "Mendisiplinkan jadwal piket asrama.",
-                    "Membentuk tim mading (majalah dinding) interaktif."
+                    "  Membangun Solidaritas Kekeluargaan - Menciptakan lingkungan organisasi yang solid, inklusif, dan suportif di mana setiap anggota merasa dirangkul sebagai keluarga, tanpa memandang angkatan dan latar belakang.",
+                    "Menjadi Wadah Pengembangan Diri - Memfasilitasi pengembangan potensi anggota baik di bidang akademik, organisasi, maupun soft skill melalui program kerja yang kreatif dan berkelanjutan.",
+                    " Mempererat Silaturahmi dan Kepedulian - Aktif menjaga komunikasi dan kepedulian antar anggota, alumni, dan masyarakat daerah melalui kegiatan kekeluargaan, sosial, dan pengabdian.",
+                    " Menumbuhkan Rasa Memiliki - Menjadikan ORDA sebagai rumah kedua yang nyaman untuk berbagi cerita, bertukar pikiran, dan tumbuh bersama."
                 ],
                 pengalaman: [
                     "Seksi Kesehatan dan Kebersihan 2025",
@@ -325,14 +481,17 @@
                 ]
             },
             "putri3": {
-                nama: "Kandidat Putri 3",
-                kategori: "Calon Ketua Putri",
+                nama: "Hilwa Fikriyah Zahidah",
+                ttl: " Pasuruan, 27 Agustus 2009",
+                kategori: "Calon Ketua IKSAP Putri",
                 foto: "kandidat6.jpg",
-                visi: "Mewujudkan santri putri yang cerdas, tangguh, dan berdaya saing global.",
+                visi: "Mewujudkan HISBU IKSAP yang solid dan progresif berlandaskan kekeluargaan dan tanggungjawab, serta berorientasi pada pengembangan potensi anggota, dan keberlanjutan kaderisasi",
                 misi: [
-                    "Mengadakan pelatihan public speaking bahasa Inggris.",
-                    "Mengaktifkan klub jurnalistik santri.",
-                    "Mengadakan lomba cerdas cermat antar kamar."
+                    "Menciptakan lingkungan organisasi yang aktif,terbuka,dan nyaman bagi seluruh anggota untuk berpendapat dan berkontribusi",
+                    "Mengembangkan program kerja yang bermanfaat,realistis,dan sesuai dengan kebutuhan anggota.",
+                    "Membangun komunikasi dan koordinasi yang baik antarpengurus dan anggota",
+                    "Menumbuhkan rasa tanggungjawab,solidaritas,dan akhlakul karimah dalam kehidupan berorganisasi.",
+                    "memperkuat kaderisasi untuk mewujudkan generasi penerus HISBU IKSAP yang bertanggungjawab dan berintegritas"
                 ],
                 pengalaman: [
                     "Ketua Klub Jurnalistik Pesantren",
@@ -353,6 +512,7 @@
             
             // Masukkan data ke dalam HTML Modal
             document.getElementById('profil-foto').src = data.foto;
+            document.getElementById('profil-ttl').innerText = data.ttl;
             document.getElementById('profil-nama').innerText = data.nama;
             document.getElementById('profil-kategori').innerText = data.kategori;
             document.getElementById('profil-visi').innerText = data.visi;
@@ -387,26 +547,109 @@
             document.getElementById('modal-profil').classList.add('hidden');
         }
 
-        // =========================================================
-        // FUNGSI UTAMA VOTING & ADMIN
+// =========================================================
+        // FUNGSI LOGIN REAL-TIME DARI 2 SPREADSHEET BERBEDA
         // =========================================================
         function prosesLogin() {
             const user = document.getElementById('usernameInput').value;
             const pass = document.getElementById('passwordInput').value;
+            // --- TAMBAHAN KODE PENGUNCI ---
+            if (user !== "admin" && user !== "panitia") { 
+                if (localStorage.getItem('voted_' + String(user).toLowerCase()) === 'true') {
+                    alert("❌ MAAF! Santri atas nama " + user + " sudah menggunakan hak suaranya.");
+                    return;
+                }
+            }
+            if (user === "" || pass === "") {
+                alert("Harap masukkan Username dan Password!");
+                return;
+            }
+           // Pintu masuk rahasia Panitia
+            if (user === "panitia" && pass === "panitia123") {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('panitia-section').classList.remove('hidden');
+                
+                // BARIS INI YANG MEMBUAT DATA LANGSUNG MUNCUL SAAT LOGIN
+                refreshDaftarPanitia(); 
+                
+                return;
+            }
             
-            if (user === "putra" && pass === "iksap123") {
-                document.getElementById('login-section').classList.add('hidden');
-                document.getElementById('voting-putra-section').classList.remove('hidden');
-            } else if (user === "putri" && pass === "iksap123") {
-                document.getElementById('login-section').classList.add('hidden');
-                document.getElementById('voting-putri-section').classList.remove('hidden');
-            } else if (user === "admin" && pass === "admin123") {
+            // Login khusus Admin (tetap pakai password bawaan agar aman)
+            if (user === "admin" && pass === "admin123") {
                 document.getElementById('login-section').classList.add('hidden');
                 document.getElementById('admin-section').classList.remove('hidden');
                 refreshDataAdmin(); 
-            } else {
-                alert("Username atau Password salah!");
+                return;
             }
+
+            const btnLogin = document.querySelector('button[onclick="prosesLogin()"]');
+            const originalText = btnLogin.innerText;
+            btnLogin.innerText = "Memeriksa Daftar Hadir...";
+            btnLogin.disabled = true;
+
+            // Membaca dari 2 Tab (Hadir Putra dan Hadir Putri) sekaligus
+            const urlPutra = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hadir Putra`;
+            const urlPutri = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Hadir Putri`;
+
+            // Proses pencarian (menggunakan Promise.all agar berjalan bersamaan)
+            Promise.all([
+                fetch(urlPutra).then(res => res.text()),
+                fetch(urlPutri).then(res => res.text())
+            ])
+            .then(([textPutra, textPutri]) => {
+                const dataPutra = JSON.parse(textPutra.substring(textPutra.indexOf('{'), textPutra.lastIndexOf('}') + 1));
+                const dataPutri = JSON.parse(textPutri.substring(textPutri.indexOf('{'), textPutri.lastIndexOf('}') + 1));
+                
+                let loginSukses = false;
+                let bilikTujuan = "";
+
+                // 1. Cek di Daftar Hadir Putra
+                if (dataPutra.table.rows) {
+                    for (let row of dataPutra.table.rows) {
+                        if (row.c && row.c[0] && row.c[1]) {
+                            if (String(row.c[0].v).toLowerCase() === String(user).toLowerCase() && String(row.c[1].v) === String(pass)) {
+                                loginSukses = true;
+                                bilikTujuan = "putra";
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // 2. Jika tidak ketemu di Putra, Cek di Daftar Hadir Putri
+                if (!loginSukses && dataPutri.table.rows) {
+                    for (let row of dataPutri.table.rows) {
+                        if (row.c && row.c[0] && row.c[1]) {
+                            if (String(row.c[0].v).toLowerCase() === String(user).toLowerCase() && String(row.c[1].v) === String(pass)) {
+                                loginSukses = true;
+                                bilikTujuan = "putri";
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                // Eksekusi jika berhasil / gagal
+                if (loginSukses) {
+                    document.getElementById('login-section').classList.add('hidden');
+                    sessionStorage.setItem('currentUser', String(user).toLowerCase().trim());
+                    if (bilikTujuan === "putra") {
+                        document.getElementById('voting-putra-section').classList.remove('hidden');
+                    } else if (bilikTujuan === "putri") {
+                        document.getElementById('voting-putri-section').classList.remove('hidden');
+                    }
+                } else {
+                    alert("Username atau Password salah, atau Anda belum terdaftar oleh Panitia!");
+                    btnLogin.innerText = originalText;
+                    btnLogin.disabled = false;
+                }
+            })
+            .catch(err => {
+                alert("Gagal terhubung ke database. Pastikan internet lancar.");
+                btnLogin.innerText = originalText;
+                btnLogin.disabled = false;
+            });
         }
 
         function prosesVote(namaKandidat, kategori) {
@@ -447,6 +690,12 @@
                 body: formData,
                 mode: 'no-cors'
             }).then(() => {
+                // --- TAMBAHAN KODE TINTA DIGITAL ---
+            const aktif = sessionStorage.getItem('currentUser');
+            if (aktif) {
+                localStorage.setItem('voted_' + aktif, 'true');
+            }
+            // -----------------------------------
                 alert('Terima kasih! Suara Anda telah berhasil disimpan.');
                 window.location.reload();
             }).catch(() => {
@@ -510,7 +759,7 @@
                         });
                     }
                     updateGrafikAdmin(p1, p2, p3, pi1, pi2, pi3);
-                    btn.innerText = "Sistem Real-Time Aktif (Otomatis)";
+                    btn.innerText = "Refresh Data";
                 })
                 .catch(err => {
                     console.log("Error mengambil data: ", err);
@@ -523,6 +772,104 @@
                 refreshDataAdmin();
             }
         }, 5000);
+        function daftarkanPemilih() {
+            const bilik = document.getElementById('panitia-bilik').value;
+            const userBaru = document.getElementById('panitia-user').value;
+            const passBaru = document.getElementById('panitia-pass').value;
+            const btnDaftar = document.getElementById('btn-daftar');
+
+            if (userBaru === "" || passBaru === "") {
+                alert("Username dan Password tidak boleh kosong!");
+                return;
+            }
+
+            btnDaftar.innerText = "Mengirim...";
+            btnDaftar.disabled = true;
+
+            const formData = new URLSearchParams();
+            formData.append('tipe', 'pendaftaran');
+            formData.append('bilik', bilik); // Mengirim ke "Hadir Putra" atau "Hadir Putri"
+            formData.append('username', userBaru);
+            formData.append('password', passBaru);
+
+            fetch(URL_DATABASE, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).then(() => {
+                alert(`BERHASIL: ${userBaru} telah didaftarkan ke ${bilik}!`);
+                document.getElementById('panitia-user').value = "";
+                document.getElementById('panitia-pass').value = "";
+                btnDaftar.innerText = "Tambahkan Pemilih";
+                btnDaftar.disabled = false;
+
+                refreshDaftarPanitia();
+            }).catch(() => {
+                alert('Gagal mengirim data. Cek koneksi.');
+                btnDaftar.innerText = "Tambahkan Pemilih";
+                btnDaftar.disabled = false;
+            });
+            // =========================================================
+        // FUNGSI UNTUK MENARIK DAFTAR HADIR KE PANEL PANITIA
+        // =========================================================
+        function refreshDaftarPanitia() {
+            const listPutra = document.getElementById('list-hadir-putra');
+            const listPutri = document.getElementById('list-hadir-putri');
+            
+            listPutra.innerHTML = '<li class="italic text-gray-400 text-center py-4">🔄 Menarik data...</li>';
+            listPutri.innerHTML = '<li class="italic text-gray-400 text-center py-4">🔄 Menarik data...</li>';
+
+           const urlPutra = `https://docs.google.com/spreadsheets/d/1gR_p5dgEY28Y54wvDHqawCybhXx2iUe82ZDc-mPbBkk/gviz/tq?tqx=out:json&sheet=Hadir Putra`;
+           const urlPutri = `https://docs.google.com/spreadsheets/d/1gR_p5dgEY28Y54wvDHqawCybhXx2iUe82ZDc-mPbBkk/gviz/tq?tqx=out:json&sheet=Hadir Putri`;
+            Promise.all([
+                fetch(urlPutra).then(res => res.text()),
+                fetch(urlPutri).then(res => res.text())
+            ])
+            .then(([textPutra, textPutri]) => {
+                const dataPutra = JSON.parse(textPutra.substring(textPutra.indexOf('{'), textPutra.lastIndexOf('}') + 1));
+                const dataPutri = JSON.parse(textPutri.substring(textPutri.indexOf('{'), textPutri.lastIndexOf('}') + 1));
+                
+                listPutra.innerHTML = '';
+                listPutri.innerHTML = '';
+
+                // Render Daftar Putra
+                if (dataPutra.table.rows && dataPutra.table.rows.length > 0) {
+                    dataPutra.table.rows.forEach(row => {
+                        if (row.c && row.c[0] && row.c[1]) {
+                            const user = row.c[0].v;
+                            const pass = row.c[1].v;
+                            listPutra.innerHTML += `<li class="flex justify-between bg-indigo-50 px-3 py-2 rounded-lg border border-indigo-100">
+                                <span>👤 <span class="font-medium">${user}</span></span>
+                                <span class="text-xs bg-indigo-200 text-indigo-800 px-2 py-1 rounded">🔑 ${pass}</span>
+                            </li>`;
+                        }
+                    });
+                } else {
+                    listPutra.innerHTML = '<li class="text-gray-500 italic text-center">Belum ada pendaftar</li>';
+                }
+
+                // Render Daftar Putri
+                if (dataPutri.table.rows && dataPutri.table.rows.length > 0) {
+                    dataPutri.table.rows.forEach(row => {
+                        if (row.c && row.c[0] && row.c[1]) {
+                            const user = row.c[0].v;
+                            const pass = row.c[1].v;
+                            listPutri.innerHTML += `<li class="flex justify-between bg-pink-50 px-3 py-2 rounded-lg border border-pink-100">
+                                <span>👤 <span class="font-medium">${user}</span></span>
+                                <span class="text-xs bg-pink-200 text-pink-800 px-2 py-1 rounded">🔑 ${pass}</span>
+                            </li>`;
+                        }
+                    });
+                } else {
+                    listPutri.innerHTML = '<li class="text-gray-500 italic text-center">Belum ada pendaftar</li>';
+                }
+            })
+            .catch(err => {
+                listPutra.innerHTML = '<li class="text-red-500 text-center">Gagal memuat data</li>';
+                listPutri.innerHTML = '<li class="text-red-500 text-center">Gagal memuat data</li>';
+            });
+        }
+        }
     </script>
 </body>
 </html>
