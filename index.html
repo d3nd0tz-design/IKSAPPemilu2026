@@ -768,7 +768,7 @@
                     let putri1 = 0, putri2 = 0, putri3 = 0;
                     let totalSuara = 0;
 
-                    // Hitung jumlah baris data yang ada (mengabaikan baris kosong)
+                   // Hitung jumlah baris data yang ada (mengabaikan baris kosong)
                     if (data.table.rows && data.table.rows.length > 0) {
                         data.table.rows.forEach(row => {
                             if (row.c && row.c[2] && row.c[2].v) { // Kolom Kandidat Terpilih adalah C (indeks 2)
@@ -776,17 +776,18 @@
                                 totalSuara++; // Tambah total suara setiap ada data valid
                                 
                                 // PENGHITUNGAN PUTRA (Sesuaikan teks dengan yang masuk di Google Sheets)
-                                if (kandidat === '01 M. Ferdy Putra 1' || kandidat.includes('Ferdy')) putra1++;
-                                else if (kandidat === '02. Hamba Allah') putra2++;
+                                if (kandidat === '01.Moh. Akmal Abdurrahman' || kandidat === '.Moh. Akmal Abdurrahman') putra1++;
+                                else if (kandidat === '02. Ibadul Muzakki') putra2++;
                                 else if (kandidat === '03. Moch. Rizqulloh') putra3++;
                                 
                                 // PENGHITUNGAN PUTRI (Sesuaikan teks dengan yang masuk di Google Sheets)
-                                else if (kandidat === 'Kandidat Putri 1') putri1++;
+                                else if (kandidat === 'Azmi Zahwa') putri1++;
                                 else if (kandidat === '02. Zaina Nura Afnuza' || kandidat === '02. Zaina Naura Afnuza') putri2++;
                                 else if (kandidat === '03. Hilwa Fikriyah Zaidah') putri3++;
                             }
                         });
                     }
+                    
 
                     // Tentukan suara tertinggi masing-masing bilik untuk persentase bar
                     let maxPutra = Math.max(putra1, putra2, putra3);
@@ -835,13 +836,15 @@
                     if (data.table.rows) {
                         data.table.rows.forEach(row => {
                             if (row.c && row.c[2] && row.c[2].v) {
-                                const kandidat = row.c[2].v;
-                                if (kandidat === "Kandidat Putra 1") p1++;
-                                else if (kandidat === "Kandidat Putra 2") p2++;
-                                else if (kandidat === "Kandidat Putra 3") p3++;
-                                else if (kandidat === "Kandidat Putri 1") pi1++;
-                                else if (kandidat === "Kandidat Putri 2") pi2++;
-                                else if (kandidat === "Kandidat Putri 3") pi3++;
+                                const kandidat = String(row.c[2].v).trim();
+                                // PENGHITUNGAN PUTRA
+                                if (kandidat === "01.Moh. Akmal Abdurrahman" || kandidat === ".Moh. Akmal Abdurrahman") p1++;
+                                else if (kandidat === "02. Ibadul Muzakki") p2++;
+                                else if (kandidat === "03. Moch. Rizqulloh") p3++;
+                                // PENGHITUNGAN PUTRI
+                                else if (kandidat === "Azmi Zahwa") pi1++;
+                                else if (kandidat === "02. Zaina Nura Afnuza" || kandidat === "02. Zaina Naura Afnuza") pi2++;
+                                else if (kandidat === "03. Hilwa Fikriyah Zaidah") pi3++;
                             }
                         });
                     }
