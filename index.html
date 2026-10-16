@@ -40,7 +40,7 @@
             </div>
             <div class="relative">
                 <!-- Tambahkan atribut autocomplete="new-password" pada kolom Password -->
-    <input type="password" id="passwordInput" autocomplete="new-password" onkeypress="if(event.key === 'Enter') prosesLogin()" placeholder="Password" class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition pr-12">
+    <input type="text" id="passwordInput" style="-webkit-text-security: disc;" onkeypress="if(event.key === 'Enter') prosesLogin()" placeholder="Password" class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition pr-12">
                 <button type="button" onclick="toggleSandi()" class="absolute inset-y-0 right-4 flex items-center text-gray-400 hover:text-indigo-600 transition cursor-pointer">
                     
                     <!-- Ikon Mata Tercoret (Ditampilkan saat sandi tersembunyi) -->
@@ -579,19 +579,21 @@
         // FUNGSI LOGIN REAL-TIME DARI 2 SPREADSHEET BERBEDA
         // =========================================================
         // FUNGSI LIHAT SANDI DENGAN PERGANTIAN IKON
+        // FUNGSI LIHAT SANDI DENGAN MANIPULASI CSS
         function toggleSandi() {
             const inputSandi = document.getElementById('passwordInput');
             const ikonTutup = document.getElementById('ikon-mata-tutup');
             const ikonBuka = document.getElementById('ikon-mata-buka');
 
-            if (inputSandi.type === 'password') {
-                inputSandi.type = 'text'; // Tampilkan teks sandi
+            // Memeriksa dan mengubah gaya penyensoran teks
+            if (inputSandi.style.webkitTextSecurity === 'disc') {
+                inputSandi.style.webkitTextSecurity = 'none'; // Menampilkan teks sandi
                 ikonTutup.classList.add('hidden');
                 ikonTutup.classList.remove('block');
                 ikonBuka.classList.remove('hidden');
                 ikonBuka.classList.add('block');
             } else {
-                inputSandi.type = 'password'; // Sembunyikan teks sandi
+                inputSandi.style.webkitTextSecurity = 'disc'; // Menyembunyikan teks sandi
                 ikonBuka.classList.add('hidden');
                 ikonBuka.classList.remove('block');
                 ikonTutup.classList.remove('hidden');
