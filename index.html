@@ -35,10 +35,12 @@
                 <p class="text-center text-sm text-gray-500 mb-8">Silakan masukkan Username & Password Warga IKSAP Anda.</p>
                 <div class="space-y-5">
                     <div>   
-                <input type="text" id="usernameInput" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('passwordInput').focus(); }" placeholder="Username" class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
+                <!-- Tambahkan atribut autocomplete="off" pada kolom Username -->
+    <input type="text" id="usernameInput" autocomplete="off" onkeypress="if(event.key === 'Enter') { event.preventDefault(); document.getElementById('passwordInput').focus(); }" placeholder="Username" class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition">
             </div>
             <div class="relative">
-                <input type="password" id="passwordInput" onkeypress="if(event.key === 'Enter') prosesLogin()" placeholder="Password" class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition pr-12">
+                <!-- Tambahkan atribut autocomplete="new-password" pada kolom Password -->
+    <input type="password" id="passwordInput" autocomplete="new-password" onkeypress="if(event.key === 'Enter') prosesLogin()" placeholder="Password" class="w-full px-5 py-3 rounded-full border border-gray-300 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition pr-12">
                 <button type="button" onclick="toggleSandi()" class="absolute inset-y-0 right-4 flex items-center text-gray-400 hover:text-indigo-600 transition cursor-pointer">
                     
                     <!-- Ikon Mata Tercoret (Ditampilkan saat sandi tersembunyi) -->
